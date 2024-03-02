@@ -23,24 +23,24 @@
       Shell.FlyoutBehavior="Disabled"
       Shell.FlyoutItemIsVisible="False" />
 
-   <TabBar FlyoutDisplayOptions="AsMultipleItems" >
+   <TabBar FlyoutDisplayOptions="AsMultipleItems">
       <ShellContent
          Title="Home"
          ContentTemplate="{DataTemplate pages:HomePage}"
          Icon="home"
-         Route="HomePage"/>
+         Route="HomePage" />
 
       <ShellContent
          Title="Cart"
          ContentTemplate="{DataTemplate pages:CartPage}"
          Icon="cart"
-         Route="CartPage"/>
+         Route="CartPage" />
 
       <ShellContent
          Title="Profile"
          ContentTemplate="{DataTemplate pages:ProfilePage}"
          Icon="user"
-         Route="ProfilePage"/>
+         Route="ProfilePage" />
    </TabBar>
 
    <MenuItem
