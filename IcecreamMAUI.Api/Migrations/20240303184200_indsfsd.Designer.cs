@@ -9,18 +9,18 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace IcecreamMAUI.Api.Data.Migrations
+namespace IcecreamMAUI.Api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240129061354_Initial")]
-    partial class Initial
+    [Migration("20240303184200_indsfsd")]
+    partial class indsfsd
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.1")
+                .HasAnnotation("ProductVersion", "8.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
