@@ -1,4 +1,7 @@
 using IcecreamMAUI.Api.Data;
+using IcecreamMAUI.Api.Endpoints;
+using IcecreamMAUI.Api.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,7 +16,24 @@ builder.Services.AddSwaggerGen();
 //var connectionString = builder.Configuration.GetConnectionString("DBLocation");
 //builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
 
-builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DBLocation")));
+builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Icecream")));
+
+builder.Services.AddAuthentication(options =>
+{
+   options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+   options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+   .AddJwtBearer(jwtOptions =>
+   {
+      jwtOptions.TokenValidationParameters = TokenService.GetTokenValidationParameters(builder.Configuration);
+   });
+
+builder.Services.AddAuthentication();
+builder.Services.AddTransient<TokenService>()
+                .AddTransient<PasswordService>()
+                .AddTransient<AuthService>();
+//builder.Services.AddTransient<PasswordService>();
+builder.Services.AddAuthentication();
 
 var app = builder.Build();
 
@@ -30,8 +50,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
-app.MapControllers();
+app.UseAuthentication();
 
+//app.MapControllers();
+
+app.MapEndpoints();
 
 app.Run();
 
