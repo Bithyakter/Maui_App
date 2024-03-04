@@ -1,10 +1,13 @@
+using IcecreamMAUI.ViewModels;
+
 namespace IcecreamMAUI.Pages;
 
 public partial class SignupPage : ContentPage
 {
-   public SignupPage()
+   public SignupPage(AuthViewModel authViewModel)
    {
       InitializeComponent();
+      BindingContext = authViewModel;
    }
 
    //private async void Button_Clicked(object sender, EventArgs e)
