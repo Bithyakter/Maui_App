@@ -10,6 +10,8 @@
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
            
+            <!--- Custom -->
+              
             <Style TargetType="Button">
                <Setter Property="BackgroundColor" Value="LightSeaGreen" />
                <!--<Setter Property="BackgroundColor" Value="{StaticResource CustomTheme}" />-->
@@ -18,6 +20,18 @@
                <Setter Property="CornerRadius" Value="25" />
                <Setter Property="HeightRequest" Value="50" />
                <Setter Property="WidthRequest" Value="250" />
+            </Style>
+
+            <Style TargetType="Entry">
+               <Setter Property="FontSize" Value="18" />
+               <Setter Property="TextColor" Value="LightSeaGreen" />
+               <Setter Property="PlaceholderColor" Value="LightSeaGreen" />
+            </Style>
+
+            <Style TargetType="Editor">
+               <Setter Property="FontSize" Value="18" />
+               <Setter Property="TextColor" Value="LightSeaGreen" />
+               <Setter Property="PlaceholderColor" Value="LightSeaGreen" />
             </Style>
       </ResourceDictionary>
     </Application.Resources>

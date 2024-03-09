@@ -2,16 +2,54 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IcecreamMAUI.Pages.SignupPage"
+             xmlns:vm="clr-namespace:IcecreamMAUI.ViewModels"
              Title="Signup"
+             x:DataType="vm:AuthViewModel"
              Shell.FlyoutBehavior="Disabled">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            Margin="0,25,0,0"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-      
-           <!--<Button Clicked="Button_Clicked" Text="Go to Login" />-->
 
-   </VerticalStackLayout>
+   <Grid>
+      <VerticalStackLayout VerticalOptions="Center" Padding="20" Spacing="15">
+
+         <Image Source="ice_cream"
+                HeightRequest="150"
+                WidthRequest="150"
+                Aspect="AspectFit" />
+
+         <Entry Text="{Binding Name}" Placeholder="Name" />
+
+         <Entry Text="{Binding Email}"
+                Placeholder="Email" 
+                Keyboard="Email" />
+
+         <Entry Text="{Binding Password}"
+                Placeholder="Password"
+                IsPassword="True" />
+
+         <Editor
+            AutoSize="TextChanges"
+            MaxLength="150"
+            Placeholder="Address"
+            Text="{Binding Address}"/>
+
+         <Label
+            Text="Existing user? Signin"
+            FontSize="15"
+            FontAttributes="Bold"
+            TextColor="SeaGreen" >
+
+            <Label.GestureRecognizers>
+               <TapGestureRecognizer Tapped="SigninLabel_Tapped" />
+            </Label.GestureRecognizers>
+         </Label>
+
+         <Button
+                 Text="Signup" 
+                 IsEnabled="{Binding CanSignup}"
+                 Command="{Binding SignupCommand}" />
+
+      </VerticalStackLayout>
+
+
+   </Grid>
+   
 </ContentPage>

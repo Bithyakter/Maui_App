@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using IcecreamMAUI.Pages;
 using IcecreamMAUI.Services;
 using IcecreamMAUI.Shared.Dtos;
@@ -29,7 +30,7 @@ namespace IcecreamMAUI.ViewModels
       public bool CanSignin => !string.IsNullOrEmpty(Email)
                           && !string.IsNullOrEmpty(Password);
 
-
+      [RelayCommand]
       private async Task SignupAsync()
       {
          IsBusy = true;
@@ -58,6 +59,7 @@ namespace IcecreamMAUI.ViewModels
          }
       }
 
+      [RelayCommand]
       private async Task SigninAsync()
       {
          IsBusy = true;
@@ -87,10 +89,5 @@ namespace IcecreamMAUI.ViewModels
             IsBusy = false;
          }
       }
-
-
-
-
    }
-
 }

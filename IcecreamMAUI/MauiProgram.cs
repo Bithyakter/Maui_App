@@ -80,7 +80,7 @@ namespace IcecreamMAUI
             .ConfigureHttpClient(httpClient =>
             {
                var baseUrl = DeviceInfo.Platform == DevicePlatform.Android
-                           ? "https://10.0.2.2.:7035"
+                           ? "http://10.0.2.2.:7035"
                            : "https://localhost:7035";
 
                httpClient.BaseAddress = new Uri(baseUrl);
