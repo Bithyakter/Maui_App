@@ -39,6 +39,8 @@ namespace IcecreamMAUI
                            .AddTransient<SignupPage>()
                            .AddTransient<SigninPage>();
 
+         builder.Services.AddTransient<AuthService>();
+
          ConfigureRefit(builder.Services);
 
          return builder.Build();
@@ -80,8 +82,8 @@ namespace IcecreamMAUI
             .ConfigureHttpClient(httpClient =>
             {
                var baseUrl = DeviceInfo.Platform == DevicePlatform.Android
-                           ? "http://10.0.2.2.:7035"
-                           : "https://localhost:7035";
+                           ? "https://10.0.2.2:7035/"
+                           : "https://10.0.2.2:7035/";
 
                httpClient.BaseAddress = new Uri(baseUrl);
             });
