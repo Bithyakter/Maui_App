@@ -11,5 +11,7 @@ namespace IcecreamMAUI.Services
       [Post("/api/signin")]
       Task<ResultWithDataDto<AuthResponseDto>> SigninAsync(SigninRequestDto dto);
 
+      [Get("/api/icecreams")]
+      Task<IcecreamDto[]> GetIcecreamsAsync();
    }
 }

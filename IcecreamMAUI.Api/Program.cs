@@ -32,7 +32,9 @@ builder.Services.AddAuthentication();
 builder.Services.AddTransient<TokenService>()
                 .AddTransient<PasswordService>()
                 .AddTransient<AuthService>();
-//builder.Services.AddTransient<PasswordService>();
+
+builder.Services.AddTransient<IcecreamService>();
+
 builder.Services.AddAuthentication();
 
 var app = builder.Build();

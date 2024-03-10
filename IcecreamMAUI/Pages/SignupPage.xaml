@@ -49,6 +49,7 @@
 
       </VerticalStackLayout>
 
+      <ActivityIndicator IsRunning="{Binding IsBusy}"/>
 
    </Grid>
    

@@ -29,13 +29,19 @@ namespace IcecreamMAUI.Services
             }
             else
             {
-               (User, Token) = JsonSerializer.Deserialize<AuthResponseDto>(serialized);
+               (User, Token) = JsonSerializer.Deserialize<AuthResponseDto>(serialized)!;
             }
          }
       }
 
 
-      public void Signout(AuthResponseDto dto)
+      //public void Signout(AuthResponseDto dto)
+      //{
+      //   Preferences.Default.Remove(AuthKey);
+      //   (User, Token) = (null, null);
+      //}
+
+      public void Signout()
       {
          Preferences.Default.Remove(AuthKey);
          (User, Token) = (null, null);

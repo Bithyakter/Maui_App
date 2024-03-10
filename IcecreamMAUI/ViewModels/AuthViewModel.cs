@@ -43,6 +43,8 @@ namespace IcecreamMAUI.ViewModels
 
             if (result.IsSuccess)
             {
+               _authService.Signin(result.Data);
+
                await GoToAsync($"//{nameof(HomePage)}", animate: true);
             }
             else
@@ -72,7 +74,9 @@ namespace IcecreamMAUI.ViewModels
 
             if (result.IsSuccess)
             {
-               await ShowAlertAsync(result.Data.Token);
+               //await ShowAlertAsync(result.Data.Token);
+
+               _authService.Signin(result.Data);
 
                await GoToAsync($"//{nameof(HomePage)}", animate: true);
             }

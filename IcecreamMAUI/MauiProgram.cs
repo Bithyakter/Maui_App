@@ -39,7 +39,11 @@ namespace IcecreamMAUI
                            .AddTransient<SignupPage>()
                            .AddTransient<SigninPage>();
 
-         builder.Services.AddTransient<AuthService>();
+         builder.Services.AddSingleton<AuthService>();
+         builder.Services.AddTransient<OnboardingPage>();
+
+         builder.Services.AddSingleton<HomeViewModel>()
+                         .AddSingleton<HomePage>();
 
          ConfigureRefit(builder.Services);
 
@@ -79,14 +83,24 @@ namespace IcecreamMAUI
          };
 
          services.AddRefitClient<IAuthApi>(refitSettings)
-            .ConfigureHttpClient(httpClient =>
-            {
-               var baseUrl = DeviceInfo.Platform == DevicePlatform.Android
-                           ? "https://10.0.2.2:7035/"
-                           : "https://10.0.2.2:7035/";
+            .ConfigureHttpClient(SetHttpClient);
 
-               httpClient.BaseAddress = new Uri(baseUrl);
-            });
+         services.AddRefitClient<IIcecreamsApi>(refitSettings)
+            .ConfigureHttpClient(SetHttpClient);
+
+         static void SetHttpClient(HttpClient httpClient)
+         {
+            var baseUrl = DeviceInfo.Platform == DevicePlatform.Android
+                            ? "https://10.0.2.2:7035/"
+                            : "https://10.0.2.2:7035/";
+
+            //if (DeviceInfo.DeviceType == DeviceType.Physical)
+            //{
+            //   baseUrl = "htpps:";
+            //}
+
+            httpClient.BaseAddress = new Uri(baseUrl);
+         }
       }
    }
 }

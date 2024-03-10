@@ -1,10 +1,11 @@
 ﻿using IcecreamMAUI.Pages;
+using IcecreamMAUI.Services;
 
 namespace IcecreamMAUI
 {
    public partial class AppShell : Shell
    {
-      public AppShell()
+      public AppShell(AuthService authService)
       {
          InitializeComponent();
 
@@ -12,6 +13,7 @@ namespace IcecreamMAUI
          //Routing.RegisterRoute(nameof(SignupPage), typeof(SignupPage));
 
          RegisterRoutes();
+         _authService = authService;
       }
 
       private readonly static Type[] _routablePageTypes =
@@ -22,6 +24,9 @@ namespace IcecreamMAUI
            typeof(OrderDetailsPage),
            typeof(DetailsPage),
         ];
+
+
+      private readonly AuthService _authService;
 
       private static void RegisterRoutes()
       {
@@ -38,7 +43,11 @@ namespace IcecreamMAUI
 
       private async void SignoutMenuItem_Clicked(object sender, EventArgs e)
       {
-         await Shell.Current.DisplayAlert("Alert", "Signout menu item clicked", "Ok");
+         //await Shell.Current.DisplayAlert("Alert", "Signout menu item clicked", "Ok");
+
+         _authService.Signout();
+
+         await Shell.Current.GoToAsync($"//{nameof(OnboardingPage)}");
       }
    }
 }

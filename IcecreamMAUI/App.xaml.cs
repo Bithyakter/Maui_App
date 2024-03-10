@@ -1,12 +1,16 @@
-﻿namespace IcecreamMAUI
+﻿using IcecreamMAUI.Services;
+
+namespace IcecreamMAUI
 {
    public partial class App : Application
    {
-      public App()
+      public App(AuthService authService)
       {
          InitializeComponent();
 
-         MainPage = new AppShell();
+         authService.Initialize();     //Add Later
+
+         MainPage = new AppShell(authService);
       }
    }
 }

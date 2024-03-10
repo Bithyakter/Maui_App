@@ -33,6 +33,12 @@
                <Setter Property="TextColor" Value="LightSeaGreen" />
                <Setter Property="PlaceholderColor" Value="LightSeaGreen" />
             </Style>
+
+            <Style TargetType="ActivityIndicator">
+               <Setter Property="HorizontalOptions" Value="Center" />
+               <Setter Property="VerticalOptions" Value="Center" />
+               <Setter Property="Color" Value="LightSeaGreen" />
+            </Style>
       </ResourceDictionary>
     </Application.Resources>
 </Application>

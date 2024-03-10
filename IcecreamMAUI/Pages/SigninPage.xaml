@@ -4,7 +4,7 @@
              x:Class="IcecreamMAUI.Pages.SigninPage"
              xmlns:vm="clr-namespace:IcecreamMAUI.ViewModels"
              Title="Signin"
-              x:DataType="vm:AuthViewModel"
+             x:DataType="vm:AuthViewModel"
              Shell.FlyoutBehavior="Disabled">
 
    <Grid>
@@ -42,10 +42,7 @@
 
       </VerticalStackLayout>
 
-      <ActivityIndicator HorizontalOptions="Center"
-                 VerticalOptions="Center"
-                 Color="LightSeaGreen"
-                 IsRunning="{Binding IsBusy}"/>
+      <ActivityIndicator IsRunning="{Binding IsBusy}"/>
 
    </Grid>
 

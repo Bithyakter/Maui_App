@@ -15,8 +15,11 @@ namespace IcecreamMAUI.Api.Endpoints
             async (SigninRequestDto dto, AuthService authService) =>
                TypedResults.Ok(await authService.SigninAsync(dto)));
 
-         return app;
+         app.MapGet("/api/icecreams",
+            async (IcecreamService icecreamService) =>
+               TypedResults.Ok(await icecreamService.GetIcecreamAsync()));
 
+         return app;
       }
    }
 }
